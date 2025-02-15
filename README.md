@@ -1,61 +1,74 @@
-# Source code of Modeling Subjective Affect Annotations with Multi-Task Learning. (The Code Follows MIT License)
+# Modeling Subjective Affect Annotations with Multi-Task Learning  
+*(Code Licensed under the MIT License)*
 
-To read the paper: Hassan Hayat, Carles Ventura, Agata Lapedriza, “Modeling Subjective Affect Annotations with Multi-Task Learning”, Sensors. 2022; 22(14):5245. DOI: https://doi.org/10.3390/s22145245)
+For further details, please refer to the paper:  
+**Hassan Hayat, Carles Ventura, Agata Lapedriza, “Modeling Subjective Affect Annotations with Multi-Task Learning”, Sensors, 2022, 22(14):5245. DOI: [10.3390/s22145245](https://doi.org/10.3390/s22145245)**
 
-This package was developed by Mr.Hassan Hayat (hhassan0@uoc.edu). Please feel free to contact in case of any query regarding the package. You can run this package at your own risk. This package is free for academic use.
+This package was developed by Mr. Hassan Hayat (hhassan0@uoc.edu). For any inquiries regarding this package, please feel free to contact him. The package is provided free for academic use and is distributed at your own risk.
 
-**Operating System**
-- Ubuntu Linux
+---
 
-**Requirements**
-- Python3.x.x
-- GPU with CUDA support
-- Audio features: [VGGish](https://github.com/tensorflow/models/tree/master/research/audioset/vggish)
-- Visual features: [I3D Model](https://github.com/deepmind/kinetics-i3d)
-- Textual features: [BERT-Base](https://github.com/google-research/bert)
-- Tensorflow1.14 
+## Operating System
 
-**Datasets**
-- [COGNIMUSE](https://cognimuse.cs.ntua.gr/research_datasets) 
-- [IEMOCAP](https://sail.usc.edu/iemocap/) 
+- **Ubuntu Linux**
+
+---
+
+## Requirements
+
+- **Python:** 3.x.x  
+- **GPU:** With CUDA support  
+- **Audio Features:** [VGGish](https://github.com/tensorflow/models/tree/master/research/audioset/vggish)  
+- **Visual Features:** [I3D Model](https://github.com/deepmind/kinetics-i3d)  
+- **Textual Features:** [BERT-Base](https://github.com/google-research/bert)  
+- **TensorFlow:** 1.14
+
+---
+
+## Datasets
+
+- [COGNIMUSE](https://cognimuse.cs.ntua.gr/research_datasets)  
+- [IEMOCAP](https://sail.usc.edu/iemocap/)  
 - [SemEval_2007](https://web.eecs.umich.edu/~mihalcea/affectivetext/)
 
-## Dataset Preprocessing ##
-**COGNIMUSE Dataset**
+---
 
-  - How to create movie clips of the COGNIMUSE dataset?
+## Dataset Preprocessing
 
-    The subtitle information of movies is provided with the timestamps. These timestamps represent the starting and ending frame information in which the     subtitle appears. We used these timestamps to create clips.
+### COGNIMUSE Dataset
 
-  - How to get the visual features?
-    
-    We used an I3D model to get the visual features. The output of the ‘Mixed-5c’ layer of the model presents the visual representation of the given         frame. Each frame was transformed into 224x224 sizes before feeding into the model.
+- **Movie Clips Creation:**  
+  The COGNIMUSE dataset provides subtitle information with timestamps that indicate the start and end frames where a subtitle appears. These timestamps are used to create movie clips.
 
-**IEMOCAP Dataset**
+- **Visual Feature Extraction:**  
+  An I3D model is used to extract visual features. The output from the **'Mixed-5c'** layer of the model represents the visual features of each frame. Prior to feeding the frames into the model, each frame is resized to **224x224** pixels.
 
-  - How to get the audio features?
+### IEMOCAP Dataset
 
-    The dyadic conversations are divided into 5 different sessions. VGGish pre-trained model is used to get the audio features of each utterance. The         output of the last convolutional layer presents the audio representation of the given utterance. For more details, please consult the paper. 
+- **Audio Feature Extraction:**  
+  The dataset’s dyadic conversations are divided into five sessions. A pre-trained VGGish model is used to extract audio features for each utterance. The audio representation is taken from the output of the last convolutional layer. Please refer to the paper for further details.
 
-**SemEval_2007 Dataset**
+### SemEval_2007 Dataset
 
-  - How to get the textual features?
+- **Textual Feature Extraction:**  
+  The BERT-Base model is employed to obtain textual semantics for each news headline. The representation is derived from the final layer (i.e., the 12th layer) of the model. Please refer to the paper for more details.
 
-    The BERT-Base model is used to get the textual semantics of each news headline in the data. The output of the last head, i.e. 12 presents the textual     representation of the given news headline. For more details, please consult the paper.
+---
 
+## Setup Instructions
 
-## Setup
-**Single-Task (ST) Learning using Multi-Modalities**
+### Single-Task (ST) Learning using Multi-Modalities
 
-*Train, Validate, and Test the single-task learning using multi-modalities*
+To train, validate, and test using multi-modalities in a single-task setting, execute the following:
 
-- ./st_main.py
+```bash
+./st_main.py
+```
 
-**Multi-Task (MT) Learning using Multi-Modalities**
+### Multi-Task (MT) Learning using Multi-Modalities
 
-*Train, Validate, and Test the multi-task learning using multi-modalities*
+To train, validate, and test using multi-modalities in a multi-task setting, execute the following:
 
-- ./mt_main.py
-
-
-
+```bash
+./mt_main.py
+```
